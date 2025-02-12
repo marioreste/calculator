@@ -7,15 +7,27 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        double num1, num2;
+        char operazione;
 
         System.out.print("Inserisci il primo numero: ");
-        double num1 = Double.parseDouble(scanner.nextLine());
+        num1 = Double.parseDouble(scanner.nextLine());
 
         System.out.print("Inserisci l'operazione (+ o -): ");
-        char operazione = scanner.next().charAt(0);
+        operazione = scanner.next().charAt(0);
 
-        System.out.print("Inserisci il secondo numero: ");
-        double num2 = Double.parseDouble(scanner.nextLine());
+        if (operazione == '/') {
+            do {
+                System.out.print("Inserisci il secondo numero (diverso da 0): ");
+                num2 = scanner.nextDouble();
+                if (num2 == 0) {
+                    System.out.println("Errore: Il divisore non può essere zero.");
+                }
+            } while (num2 == 0);
+        } else {
+            System.out.print("Inserisci il secondo numero: ");
+            num2 = Double.parseDouble(scanner.nextLine());
+        }
 
         double risultato = 0;
 
