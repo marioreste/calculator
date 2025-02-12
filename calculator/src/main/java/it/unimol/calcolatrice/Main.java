@@ -26,6 +26,9 @@ public class Main {
             case '-':
                 risultato = new Sottrazione().calcola(num1, num2);
                 break;
+            case '*':
+                risultato = new Moltiplicazione().calcola(num1, num2);
+                break;
             default:
                 System.out.println("Operazione non valida.");
                 scanner.close();
