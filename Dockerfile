@@ -11,7 +11,7 @@ RUN apt-get clean \
 
 RUN git clone https://github.com/marioreste/calculator.git
 
-WORKDIR /calculator/calculator
+WORKDIR /calculator
 
 RUN mvn package
 
