@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        /*Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         double num1, num2;
         int operazione;
 
@@ -58,9 +58,9 @@ public class Main {
         }
 
         System.out.println("Risultato: " + risultato);
-        scanner.close(); */
+        scanner.close();
 
-        String expression = "3 + 5 * (2 - 4) / 2"; // Esempio di espressione matematica
+        /*String expression = "3 + 5 * (2 - 4) / 2"; // Esempio di espressione matematica
 
         Evaluator evaluator = new Evaluator();
         try {
@@ -68,6 +68,6 @@ public class Main {
             System.out.println("Result: " + result);
         } catch (Exception e) {
             System.err.println("Error evaluating expression: " + e.getMessage());
-        }
+        } */
     }
 }
