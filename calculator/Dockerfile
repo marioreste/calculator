@@ -1,18 +1,13 @@
-FROM ubuntu:latest
+FROM maven:3.9-amazoncorretto-17-alpine
 
-RUN apt-get update && apt-get install -y \
-    openjdk-17-jdk \
-    maven \
-    git && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
 
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-ENV PATH="$JAVA_HOME/bin:$PATH"
+RUN apk update && apk add --no-cache git
 
 RUN git clone https://github.com/marioreste/calculator
 
-WORKDIR /calculator
+WORKDIR calculator/calculator
 
-RUN mvn package
+RUN mvn clean install
 
 CMD [ "java", "-jar", "target/calculator-1.0-SNAPSHOT.jar" ]

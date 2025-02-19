@@ -44,8 +44,6 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <addClasspath>true</addClasspath>
-                        <classpathPrefix>target/classes/</classpathPrefix>
                         <mainClass>it.unimol.calcolatrice.Main</mainClass>
                     </manifest>
                 </archive>
