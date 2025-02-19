@@ -1,13 +1,20 @@
-FROM maven:3.9-amazoncorretto-17-alpine
+FROM ubuntu:latest
 
-WORKDIR /app
+RUN apt-get update
 
-RUN apk update && apk add --no-cache git
+RUN apt-get install -y maven
 
-RUN git clone https://github.com/marioreste/calculator
+RUN apt-get install -y git
 
-WORKDIR calculator/calculator
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/
 
-RUN mvn clean install
+RUN git clone https://github.com/marioreste/calculator.git
 
-CMD [ "java", "-jar", "target/calculator-1.0-SNAPSHOT.jar" ]
+WORKDIR /calculator/calculator
+
+RUN mvn package
+
+WORKDIR target
+
+CMD [ "java", "-jar", "calculator-1.0-SNAPSHOT.jar" ]
