@@ -8,15 +8,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double num1, num2;
-        char operazione;
+        int operazione;
 
         System.out.print("Inserisci il primo numero: ");
         num1 = Double.parseDouble(scanner.nextLine());
 
-        System.out.print("Inserisci l'operazione (+ o -): ");
-        operazione = scanner.next().charAt(0);
+        System.out.print("Inserisci l'operazione: \n" +
+                "1. Addizione \n" +
+                "2. Sottrazione\n" +
+                "3. Moltiplicazione\n" +
+                "4. Divisione\n");
+        operazione = Integer.parseInt(scanner.nextLine());
 
-        if (operazione == '/') {
+        if (operazione == 4) {
             do {
                 System.out.print("Inserisci il secondo numero (diverso da 0): ");
                 num2 = scanner.nextDouble();
@@ -32,14 +36,17 @@ public class Main {
         double risultato = 0;
 
         switch (operazione) {
-            case '+':
+            case 1:
                 risultato = new Addizione().calcola(num1, num2);
                 break;
-            case '-':
+            case 2:
                 risultato = new Sottrazione().calcola(num1, num2);
                 break;
-            case '*':
+            case 3:
                 risultato = new Moltiplicazione().calcola(num1, num2);
+                break;
+            case 4:
+                risultato = new Divisione().calcola(num1, num2);
                 break;
             default:
                 System.out.println("Operazione non valida.");
