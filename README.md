@@ -75,7 +75,7 @@ CMD ["java", "-jar", "calculator-1.0-SNAPSHOT.jar"]
 Build and run the container:
 ```sh
 docker build -t calculator .
-docker run --rm calculator
+docker run --rm -it calculator
 ```
 
 ## License
