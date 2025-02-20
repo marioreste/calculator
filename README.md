@@ -1,10 +1,9 @@
 # Calculator
 
-A calculator written in Java with support for mathematical operations and parsing using ANTLR4.
+A calculator written in Java with support for mathematical operations.
 
 ## Features
 - Support for basic arithmetic operations.
-- Uses **ANTLR4** for parsing mathematical expressions.
 - **Maven**-based structure for dependency and build management.
 - Automated testing with **JUnit**.
 
@@ -36,9 +35,9 @@ The project is configured with **Maven**, so dependencies are managed automatica
 ```xml
 <dependencies>
     <dependency>
-        <groupId>org.antlr</groupId>
-        <artifactId>antlr4-runtime</artifactId>
-        <version>4.11.1</version>
+        <groupId>net.sourceforge.jeval</groupId>
+        <artifactId>jeval</artifactId>
+        <version>1.3.4</version>
     </dependency>
     <dependency>
         <groupId>org.junit.jupiter</groupId>
@@ -58,13 +57,20 @@ mvn test
 ## Running with Docker
 To run the application inside a Docker container, use the following `Dockerfile`:
 ```dockerfile
-FROM maven:3.9-amazoncorretto-17-alpine
-WORKDIR /app
-RUN apk update && apk add --no-cache git
-RUN git clone https://github.com/marioreste/calculator
-WORKDIR /app/calculator
-RUN mvn clean package
-CMD ["java", "-jar", "target/calculator-1.0-SNAPSHOT.jar"]
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y \
+    openjdk-17-jdk \
+    maven \
+    git && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/marioreste/calculator.git
+
+WORKDIR /calculator
+RUN mvn package
+
+WORKDIR target
+CMD ["java", "-jar", "calculator-1.0-SNAPSHOT.jar"]
 ```
 Build and run the container:
 ```sh
